@@ -10,7 +10,8 @@ senic = SenicProducts()
 @api.route('/products', methods=['GET'])
 def get_all_products():
     """Fetch all available product images."""
-    return jsonify({"products": senic.products})
+    return senic.get_products()
+    # return jsonify({"product====": senic.get_products()})
 
 @api.route('/products/search', methods=['GET'])
 def search_product():
