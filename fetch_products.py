@@ -29,7 +29,7 @@ class SenicProducts:
                         products[product_name].append(full_url)
                     else:
                         products[product_name] = [full_url]
-
+            # print(f"products : {products}")
             return products
 
         except Exception as e:
