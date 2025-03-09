@@ -1,4 +1,4 @@
-# Use official lightweight Python image
+# Use a lightweight Python image
 FROM python:3.10-slim
 
 # Set environment variables to avoid buffering issues
@@ -12,11 +12,11 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
+# Copy the application code
 COPY . .
 
-# Expose the application port
-EXPOSE 5000
+# Expose the correct port for health checks
+EXPOSE 8000
 
-# Command to run the application
-CMD ["python", "app.py"]
+# Run Flask with Gunicorn on port 8000
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]
